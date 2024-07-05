@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel Data Display</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+</head>
+<body>
+    <h1>Excel Data</h1>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Column1</th>
+                <th>Column2</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $.get('data.csv', function(data) {
+                var rows = data.split("\n");
+                var tableData = [];
+                rows.forEach(function(row) {
+                    var cols = row.split(",");
+                    tableData.push(cols);
+                });
+                $('#example').DataTable({
+                    data: tableData,
+                    columns: [
+                        { title: "Column1" },
+                        { title: "Column2" }
+                        // Add more columns as needed
+                    ]
+                });
+            });
+        });
+    </script>
+</body>
+</html>
