@@ -19,13 +19,11 @@
         </tbody>
     </table>
     
-    <div class="footer">
-        For more data, please contact us.
-    </div>
+
     
     <script>
         $(document).ready(function() {
-            $.get('data-250309.csv', function(data) {
+            $.get('data-2503.csv', function(data) {
                 var rows = data.split("\n");
                 var tableData = [];
                 var headers = rows[0].split(",");
